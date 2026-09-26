@@ -1,6 +1,8 @@
 # VTU Platform — Backend Engineering Portfolio
 
-A Laravel-based digital-services platform demonstrating backend engineering concepts including transactional wallet management, payment processing, asynchronous webhook handling, database integrity, authentication, authorization, and automated testing.
+A sanitized Laravel-based digital-services platform demonstrating backend engineering concepts in transactional wallet management, payment processing, webhook-driven workflows, database transactions, authentication and authorization, and automated testing.
+
+This repository is a public portfolio version of a larger application. Production credentials, customer data, payment-provider secrets, and security-sensitive business logic have been excluded or replaced with safe demonstration components.
 
 ## Engineering Focus
 
