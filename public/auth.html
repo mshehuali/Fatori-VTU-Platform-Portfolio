@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VTU Platform — Login / Register</title>
+
+    <!-- Use compiled Tailwind + Theme Tokens -->
+    <link rel="stylesheet" href="/build/assets/app.css" />
+    <script src="/build/assets/app.js" defer></script>
+
+    <!-- Inter Font -->
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+    />
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        /* Smooth slider animation */
+        .form-slider {
+            transition: transform 0.6s cubic-bezier(.25,.46,.45,.94);
+        }
+
+        /* Gradient panel (kept intentional — branding) */
+        .gradient-panel {
+            background: linear-gradient(
+                135deg,
+                #10b981 0%,
+                #0d9488 50%,
+                #06b6d4 100%
+            );
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
+
+    <!-- Auth Container -->
+    <div id="auth-container"
+         class="bg-card rounded-2xl shadow-2xl border border-border overflow-hidden
+                w-full max-w-5xl md:grid md:grid-cols-2 transform transition duration-500"
+         data-is-register="false">
+
+        <!-- FORM PANEL -->
+        <div class="p-8 sm:p-12 relative overflow-hidden">
+            <div id="form-slider" class="form-slider w-[200%] flex">
+
+                <!-- LOGIN -->
+                <div class="w-1/2 p-4 sm:p-0">
+                    <h2 class="text-3xl font-extrabold">Log in</h2>
+                    <p class="mt-2 text-sm text-muted-foreground">
+                        Access your VTU dashboard instantly.
+                    </p>
+
+                    <form onsubmit="event.preventDefault(); showMessage('Login attempted!', 'success')"
+                          class="space-y-5 mt-6">
+
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Email</label>
+                            <input type="email" required
+                                   class="w-full px-4 py-3 rounded-xl border border-border bg-input
+                                          focus:ring-ring focus:border-ring" />
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <label class="text-sm font-medium">Password</label>
+                                <a href="#" class="text-xs text-primary hover:underline">
+                                    Forgot?
+                                </a>
+                            </div>
+                            <input type="password" required
+                                   class="w-full px-4 py-3 rounded-xl border border-border bg-input
+                                          focus:ring-ring focus:border-ring" />
+                        </div>
+
+                        <button type="submit"
+                                class="w-full px-6 py-3 rounded-xl bg-primary text-primary-foreground
+                                       font-semibold shadow hover:opacity-90 transition">
+                            Log in
+                        </button>
+                    </form>
+
+                    <p class="mt-6 text-sm text-muted-foreground md:hidden text-center">
+                        New here?
+                        <a href="#" onclick="toggleForm(true)" class="text-primary font-semibold">
+                            Create an account
+                        </a>
+                    </p>
+                </div>
+
+                <!-- REGISTER -->
+                <div class="w-1/2 p-4 sm:p-0">
+                    <h2 class="text-3xl font-extrabold">Create account</h2>
+                    <p class="mt-2 text-sm text-muted-foreground">
+                        It only takes a minute to join the platform.
+                    </p>
+
+                    <form onsubmit="event.preventDefault(); showMessage('Registration attempted!', 'success')"
+                          class="space-y-4 mt-6">
+
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Full Name</label>
+                            <input type="text" required
+                                   class="w-full px-4 py-3 rounded-xl border border-border bg-input
+                                          focus:ring-ring focus:border-ring" />
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Email</label>
+                            <input type="email" required
+                                   class="w-full px-4 py-3 rounded-xl border border-border bg-input
+                                          focus:ring-ring focus:border-ring" />
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <input type="password" placeholder="Password" required
+                                   class="px-4 py-3 rounded-xl border border-border bg-input" />
+                            <input type="password" placeholder="Confirm" required
+                                   class="px-4 py-3 rounded-xl border border-border bg-input" />
+                        </div>
+
+                        <button type="submit"
+                                class="w-full px-6 py-3 rounded-xl bg-secondary text-secondary-foreground
+                                       font-semibold shadow hover:opacity-90 transition">
+                            Create account
+                        </button>
+                    </form>
+
+                    <p class="mt-6 text-sm text-muted-foreground md:hidden text-center">
+                        Already have an account?
+                        <a href="#" onclick="toggleForm(false)" class="text-primary font-semibold">
+                            Log in
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div id="info-panel"
+             class="gradient-panel hidden md:flex flex-col justify-between p-12 text-white">
+
+            <div id="login-info">
+                <h1 class="text-4xl font-extrabold">Welcome Back!</h1>
+                <p class="mt-3 opacity-90 max-w-sm">
+                    Buy airtime, data, and manage wallet transactions from one modern dashboard.
+                </p>
+                <button onclick="toggleForm(true)"
+                        class="mt-6 px-8 py-3 rounded-full border-2 border-white">
+                    Create an account
+                </button>
+            </div>
+
+            <div id="register-info" class="hidden">
+                <h1 class="text-4xl font-extrabold">Hello, Friend!</h1>
+                <p class="mt-3 opacity-90 max-w-sm">
+                    Join the fastest VTU platform in Nigeria — secure and reliable.
+                </p>
+                <button onclick="toggleForm(false)"
+                        class="mt-6 px-8 py-3 rounded-full border-2 border-white">
+                    Log in instead
+                </button>
+            </div>
+
+            <p class="pt-8 text-sm opacity-80">
+                VTU Nigeria — Smarter mobile top-ups & bill payments.
+            </p>
+        </div>
+    </div>
+
+    <!-- Message Toast -->
+    <div id="message-box"
+         class="fixed bottom-4 right-4 translate-x-full transition"></div>
+
+    <script>
+        window.toggleForm = (isRegister) => {
+            const slider = document.getElementById("form-slider");
+            document.getElementById("login-info").classList.toggle("hidden", isRegister);
+            document.getElementById("register-info").classList.toggle("hidden", !isRegister);
+            slider.style.transform = isRegister ? "translateX(-50%)" : "translateX(0)";
+        };
+
+        function showMessage(text, type="info") {
+            const box = document.getElementById("message-box");
+            box.innerHTML =
+                `<div class="bg-primary text-primary-foreground px-4 py-3 rounded shadow">${text}</div>`;
+            box.classList.remove("translate-x-full");
+            setTimeout(()=>box.classList.add("translate-x-full"), 2500);
+        }
+    </script>
+
+</body>
+</html>

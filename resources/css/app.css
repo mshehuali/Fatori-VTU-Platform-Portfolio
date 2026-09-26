@@ -1,0 +1,160 @@
+@import './new/fonts.css';
+@import './new/theme.css';
+@import './new/index.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+select option {
+  background-color: var(--card);
+  color: var(--foreground);
+}
+
+@import 'tailwindcss' source(none);
+@source '../**/*.{js,ts,jsx,tsx}';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─────────────────────────────────────────────
+   🌤 LIGHT MODE TOKENS (Mint / Fintech Unified)
+───────────────────────────────────────────── */
+:root {
+  --font-size: 16px;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --border: #ccefe0;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --radius: 0.75rem;
+  --text-primary-mint: #065f46;
+  --stat-card-bg: #ecfdf5;
+  --stat-card-border: var(--border);
+  --stat-card-text: var(--text-primary-mint);
+  --service-card-bg: #f0fdfa;
+  --service-card-border: var(--border);
+  --service-card-text: var(--text-primary-mint);
+  --surface-card-bg: #f8fffb;
+  --surface-card-border: var(--border);
+  --surface-card-text: var(--text-primary-mint);
+  --txn-row-hover: #ecfdf5;
+  --pill-bg: #ecfdf5;
+  --pill-border: var(--border);
+  --pill-text: var(--text-primary-mint);
+  --btn-primary-bg: #0d9488;
+  --btn-primary-text: #ffffff;
+  --btn-secondary-bg: #ecfdf5;
+  --btn-secondary-text: #0f766e;
+}
+
+/* ─────────────────────────────────────────────
+   🌙 DARK MODE TOKENS + 🔥 COMPLETE FORM FIX
+───────────────────────────────────────────── */
+.dark {
+  --background: #020617;
+  --foreground: #e5e7eb;
+  --border: #1f3a40;
+  --card: #020617;
+  --card-foreground: #e5e7eb;
+  --text-primary-mint-dark: #ccfbf1;
+  --stat-card-bg: #0f2a24;
+  --stat-card-border: var(--border);
+  --stat-card-text: var(--text-primary-mint-dark);
+  --service-card-bg: #0b1f24;
+  --service-card-border: var(--border);
+  --service-card-text: var(--text-primary-mint-dark);
+  --surface-card-bg: #071a1d;
+  --surface-card-border: var(--border);
+  --surface-card-text: var(--text-primary-mint-dark);
+  --txn-row-hover: #0b2e2b;
+  --pill-bg: #0b2e2b;
+  --pill-border: var(--border);
+  --pill-text: #99f6e4;
+  --btn-primary-bg: #0d9488;
+  --btn-primary-text: #ecfeff;
+  --btn-secondary-bg: #134e4a;
+  --btn-secondary-text: var(--text-primary-mint-dark);
+
+  /* 🔥🔥 BULLETPROOF FORM ELEMENTS - SELECT + INPUTS */
+  input,
+  input[type="tel"],
+  input[type="number"],
+  input[type="password"],
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  **select,
+  select * {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+    border-color: var(--border) !important;
+  }
+
+  /* Focus states */
+  input:focus,
+  textarea:focus,
+  **select:focus** {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+    border-color: #0d9488 !important;
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1) !important;
+    outline: none !important;
+  }
+
+  /* Select dropdown options */
+  select option {
+    background-color: var(--card) !important;
+    color: var(--card-foreground) !important;
+  }
+
+  /* Autofill */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-fill: var(--background) !important;
+    -webkit-text-fill-color: var(--foreground) !important;
+    box-shadow: 0 0 0 30px var(--background) inset !important;
+    transition: background-color 9999s !important;
+  }
+}
+
+@layer base {
+  * { border-color: var(--border); }
+  body { 
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+  html { font-size: var(--font-size); }
+}
+
+@layer utilities {
+  .bg-stat-card { background-color: var(--stat-card-bg); }
+  .border-stat-card { border-color: var(--stat-card-border); }
+  .text-stat-card { color: var(--stat-card-text); }
+  .bg-service-card { background-color: var(--service-card-bg); }
+  .border-service-card { border-color: var(--service-card-border); }
+  .text-service-card { color: var(--service-card-text); }
+  .bg-surface-card { background-color: var(--surface-card-bg); }
+  .border-surface-card { border-color: var(--surface-card-border); }
+  .text-surface-card { color: var(--surface-card-text); }
+  .bg-pill { background-color: var(--pill-bg); }
+  .border-pill { border-color: var(--pill-border); }
+  .text-pill { color: var(--pill-text); }
+  .btn-primary { background-color: var(--btn-primary-bg); color: var(--btn-primary-text); }
+  .btn-secondary { background-color: var(--btn-secondary-bg); color: var(--btn-secondary-text); }
+  .hover-txn:hover { background-color: var(--txn-row-hover); }
+  
+  .icon-bubble {
+    background-color: color-mix(in srgb, var(--service-card-bg) 85%, white);
+    color: var(--service-card-text);
+  }
+  .dark .icon-bubble {
+    background-color: color-mix(in srgb, var(--service-card-bg) 85%, black);
+    color: var(--service-card-text);
+  }
+  
+  .card-elevated { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); }
+  .dark .card-elevated { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04); }
+}

@@ -1,0 +1,48 @@
+*.log
+.DS_Store
+.env
+.env.backup
+.env.production
+.phpactor.json
+.phpunit.result.cache
+/.fleet
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/auth.json
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+Homestead.json
+Homestead.yaml
+Thumbs.db
+
+# Laravel runtime and generated files
+/storage/framework/sessions/*
+/storage/framework/cache/*
+/storage/framework/views/*
+/storage/debugbar/*
+/bootstrap/cache/*.php
+
+# Local development/debug artifacts
+/debug_*.php
+/debug_*.txt
+/errors_only.txt
+/lint_results.txt
+/payload.json
+/get()
+
+# Local test/runtime files
+/.phpunit.cache
+
+# Local SQLite database
+/database/*.sqlite
+/database/*.sqlite-*
+
+/database/database.sqlite
